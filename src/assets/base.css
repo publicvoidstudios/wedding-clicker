@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Great+Vibes&display=swap');
+
+:root {
+  /* Фон: холодный жемчуг */
+  --wc-cream: #eae2d5;
+  --wc-cream-dark: #e6e9f0;
+  --wc-ink: #1f2329;
+  --wc-ink-soft: #3c4350;
+  --wc-muted: #6b7380;
+
+  /* Акцент «белое золото» / платина (имена --wc-gold* сохранены для совместимости) */
+  --wc-gold: #b8c2d0;
+  --wc-gold-dark: #4f5868;
+  --wc-accent: #98a3b3;
+  --wc-metal-shine: #eef0f4;
+  --wc-metal-mid: #9ea8b6;
+
+  --wc-border-soft: rgba(120, 132, 148, 0.22);
+  --wc-border-mid: rgba(120, 132, 148, 0.32);
+  --wc-border-strong: rgba(120, 132, 148, 0.45);
+  --wc-shadow-metal: rgba(55, 65, 80, 0.22);
+  --wc-glow-metal: rgba(130, 145, 165, 0.35);
+
+  --wc-serif: 'Cormorant Garamond', Georgia, serif;
+  --wc-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --font-family-handwritten: "Great Vibes", cursive;
+  --font-family-monotype: "Source Sans 3", serif;
+  --font-family-primary: "Cormorant", serif;
+
+
+  --color-background: var(--wc-cream);
+  --color-text: var(--wc-ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  color: var(--color-text);
+  background: radial-gradient(
+    ellipse 120% 80% at 50% -20%,
+    #eef1f6 0%,
+    var(--wc-cream) 45%,
+    var(--wc-cream-dark) 100%
+  );
+  font-family: var(--wc-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Полный набор достижений: мягкий переливающийся пастельный градиент */
+@keyframes wc-pastel-sheen {
+  0% {
+    background-position: 0% 40%;
+  }
+  25% {
+    background-position: 100% 60%;
+  }
+  50% {
+    background-position: 90% 30%;
+  }
+  75% {
+    background-position: 20% 70%;
+  }
+  100% {
+    background-position: 0% 40%;
+  }
+}
+
+@keyframes wc-pastel-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+html.wc-all-achievements body {
+  background-color: #f4eef8;
+  background-image:
+    radial-gradient(ellipse 85% 55% at 20% 15%, rgba(255, 232, 240, 0.95) 0%, transparent 55%),
+    radial-gradient(ellipse 75% 50% at 85% 25%, rgba(220, 236, 255, 0.9) 0%, transparent 52%),
+    radial-gradient(ellipse 70% 60% at 50% 95%, rgba(230, 248, 238, 0.88) 0%, transparent 50%),
+    linear-gradient(
+      118deg,
+      #f5e8f2 0%,
+      #e8eef9 18%,
+      #ecf6f1 36%,
+      #fdf0e8 54%,
+      #eee6fc 72%,
+      #e6f0fa 88%,
+      #f8e9f3 100%
+    );
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    320% 320%;
+  background-attachment: fixed;
+  animation: wc-pastel-sheen 22s ease-in-out infinite;
+}
+
+html.wc-all-achievements body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 252, 248, 0.45) 0%, transparent 62%);
+  animation: wc-pastel-glow 14s ease-in-out infinite;
+}
+
+html.wc-all-achievements #app {
+  position: relative;
+  z-index: 1;
+}
