@@ -65,7 +65,7 @@ path {
 }
 
 .base-line {
-  stroke: #cfcfcf;
+  stroke: transparent;
 }
 
 .animated-line {
