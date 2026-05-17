@@ -23,13 +23,26 @@
         v-else-if="special === 'hourglass'"
         :line-progress="lineProgress"
       />
+      <curvy-glasses-line
+        v-else-if="special === 'glasses'"
+        :line-progress="lineProgress"
+      />
       <curvy-line
         v-else
         :even="even"
         :line-progress="lineProgress"
       />
     </div>
-    <curvy-text :even="even" >
+    <curvy-text
+      :even="even"
+      :headerOffset="headerOffset"
+      :bodyOffset="bodyOffset"
+      :footerOffset="footerOffset"
+      :outlinePosition="outlinePosition"
+      :path-variation="pathVariation"
+      :outlineSize="outlineSize"
+      :outlineStrokeWidth="outlineStrokeWidth"
+    >
       <template #header>
         <slot name="header" />
       </template>
@@ -41,6 +54,7 @@
       </template>
     </curvy-text>
     <ShopDecorAnchor v-if="shopAnchor" :anchor-id="shopAnchor" />
+    <curvy-block-background :even="even" :variation="backgroundVariation" />
   </div>
 </template>
 
@@ -54,18 +68,37 @@ import CurvyGiftLine from '@/components/parts/CurvyGiftLine.vue';
 import CurvyTagLine from '@/components/parts/CurvyTagLine.vue';
 import CurvyHourglassLine from '@/components/parts/CurvyHourglassLine.vue';
 import { useCurvyLineScrollProgress } from '@/composables/useCurvyLineScrollProgress';
+import CurvyBlockBackground from '@/components/parts/CurvyBlockBackground.vue';
+import CurvyGlassesLine from '@/components/parts/CurvyGlassesLine.vue';
 
 const COMPACT_STROKE_RATIO = 0.33 / 1.33;
 
 const props = withDefaults(
   defineProps<{
     even?: boolean;
-    special?: 'none' | 'heart' | 'gift' | 'tag' | 'hourglass';
+    special?: 'none' | 'heart' | 'gift' | 'tag' | 'hourglass' | 'glasses';
     lineStrokeWidth?: number;
     /** Id для привязки предметов магазина (`curvyAnchor` в `config/upgrades`) */
     shopAnchor?: string;
+    headerOffset?: string;
+    bodyOffset?: string;
+    footerOffset?: string;
+    outlinePosition?: {
+      desktop?: {
+        x: string;
+        y: string;
+      },
+      mobile?: {
+        x: string;
+        y: string;
+      }
+    };
+    pathVariation?: number;
+    outlineSize?: string;
+    outlineStrokeWidth?: number;
+    backgroundVariation?: 1 | 2;
   }>(),
-  { lineStrokeWidth: 1 }
+  { lineStrokeWidth: 1 },
 );
 
 const lineStrokeCssVars = computed(() => {

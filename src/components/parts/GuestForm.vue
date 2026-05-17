@@ -32,7 +32,6 @@ onMounted(async () => {
 
   if (formContainerRef.value) {
     const observer = new ResizeObserver((ent: ResizeObserverEntry[]) => {
-      console.log(ent[0].borderBoxSize[0].blockSize);
       formContainerHeight.value = ent[0].borderBoxSize[0].blockSize - FORM_FOOTER_HEIGHT;
     });
 
