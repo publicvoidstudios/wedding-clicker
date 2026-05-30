@@ -6,7 +6,7 @@
         <span class="date-polaroid__names__additional">wedding day</span>
       </span>
 
-      <img width="300" src="../assets/temp_img.png" alt="">
+      <img width="300" src="../assets/welcome.png" alt="">
       <div class="date-polaroid__welcome" aria-live="polite">
         <span class="date-polaroid__welcome-text" style="font-weight: 600">Мы решили пожениться!</span>
         <span class="date-polaroid__welcome-text">
