@@ -10,11 +10,11 @@
       <div class="date-polaroid__welcome" aria-live="polite">
         <span class="date-polaroid__welcome-text" style="font-weight: 600">Мы решили пожениться!</span>
         <span class="date-polaroid__welcome-text">
-          И хотим разделить этот день с вами!
+          И хотим разделить этот день с {{ greetingPronounPlural ? 'вами' : 'тобой' }}!
           <br>
-          {{greetingName}}, будем рады видеть {{greetingPronoun}} на нашем празднике.
+          {{ greetingName }}, будем рады видеть {{ greetingPronounPlural ? 'вас' : 'тебя' }} на нашем празднике.
           <br>
-          Сохраните дату в календаре — создадим теплые воспоминания вместе!
+          Сохрани{{ greetingPronounPlural ? 'те' : '' }} дату в календаре — создадим теплые воспоминания вместе!
         </span>
 
       </div>
@@ -53,10 +53,10 @@ import { useAddToCalendar } from '@/composables/useAddToCalendar';
 
 const {
   greetingName = 'гость',
-  greetingPronoun = 'вас'
+  greetingPronounPlural = true,
 } = defineProps<{
   greetingName?: string;
-  greetingPronoun?: string;
+  greetingPronounPlural?: boolean;
 }>();
 
 const {

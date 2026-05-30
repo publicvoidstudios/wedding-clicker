@@ -24,7 +24,7 @@ const store = useGameStore();
 store.initFromUrl();
 setupGamePersistence(store);
 
-const { greetingName, allShopPurchased, ringClickCount, gameUiActive, purchasedIds, unlockedAchievementIds, langFakeToggleCount } =
+const { greetingName, greetingPronoun, allShopPurchased, ringClickCount, gameUiActive, purchasedIds, unlockedAchievementIds, langFakeToggleCount } =
   storeToRefs(store);
 
 let achieverGrantDelayHandle: ReturnType<typeof setTimeout> | null = null;
@@ -179,7 +179,7 @@ watch(
       </div>
     </section>
 
-    <DatePolaroid :greeting-name="greetingName" />
+    <DatePolaroid :greeting-name="greetingName" :greeting-pronoun-plural="greetingPronoun" />
     <curvy-block
       special="tag"
       shop-anchor="venue"

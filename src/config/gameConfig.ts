@@ -34,3 +34,14 @@ export function isGameUiEnabledInParams(params: URLSearchParams): boolean {
   const v = raw.trim().toLowerCase()
   return v === 'true' || v === '1'
 }
+
+/** `?plural=true` или `?plural=1` — множественное число; иначе единственное. Без параметра — true. */
+export const PLURAL_QUERY_PARAM = 'plural'
+
+export function isPluralInParams(params: URLSearchParams): boolean {
+  if (!params.has(PLURAL_QUERY_PARAM)) return true
+  const raw = params.get(PLURAL_QUERY_PARAM)
+  if (raw === null) return true
+  const v = raw.trim().toLowerCase()
+  return v === 'true' || v === '1'
+}

@@ -5,6 +5,7 @@ import {
   SHOP_UNLOCK_SCORE,
   INVITATION_UNLOCK_PURCHASES,
   isGameUiEnabledInParams,
+  isPluralInParams,
 } from '@/config/gameConfig'
 import { isAchievementId } from '@/config/achievements'
 import { upgrades } from '@/config/upgrades'
@@ -88,6 +89,8 @@ interface GameState {
   tickHandle: number | null
   /** Задаётся только из URL при `initFromUrl` (см. `isGameUiEnabledInParams` в gameConfig) */
   gameUiActive: boolean
+  /** Задаётся только из URL при `initFromUrl` (см. `isPluralInParams` в gameConfig) */
+  guestPlural: boolean
 }
 
 export const useGameStore = defineStore('game', {
@@ -107,6 +110,7 @@ export const useGameStore = defineStore('game', {
       achievementsModalOpen: false,
       tickHandle: null,
       gameUiActive: false,
+      guestPlural: true,
     }
   },
 
@@ -129,6 +133,8 @@ export const useGameStore = defineStore('game', {
     invitationVisible: (s) => s.purchasedIds.length >= INVITATION_UNLOCK_PURCHASES,
 
     greetingName: (s) => s.guestName.trim() || 'Дорогой гость',
+
+    greetingPronoun: (s) => s.guestPlural,
   },
 
   actions: {
@@ -138,6 +144,7 @@ export const useGameStore = defineStore('game', {
       if (name !== null && name.trim() !== '') {
         this.guestName = name.trim()
       }
+      this.guestPlural = isPluralInParams(params)
       this.gameUiActive = isGameUiEnabledInParams(params)
     },
 
